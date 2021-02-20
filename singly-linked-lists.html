@@ -17,6 +17,11 @@
         <li>Since they are not indexed (like arrays), there is no need to re-index anything when inserting/deleting new values</li>
         <li>Cannot support 'random' access, and must be traversed to locate desired node/value</li>
     </ul>
+
+    <p>Example:</p>
+    <div id="list">
+
+    </div>
 </body>
 
 <script>
@@ -204,23 +209,22 @@
         }
     }
 
-    let list = new SinglyLinkedList();
-    list.push("hi");
-    list.push("bye");
-    list.push("hello again");
-    console.log(list);
-    console.log(list.shift());
-    console.log(list);
-    console.log(list.unshift('new item'));
-    console.log(list.set(2,"CHANGED"));
-    console.log(list);
-    console.log(list.insert(2,"something inserted in"));
-    console.log(list);
-    console.log(list.remove(0));
-    list.print();
-    list.reverse();
-    list.print();
-    console.log(list);
+    generateExample();
+
+    function generateExample() {
+        let list = new SinglyLinkedList();
+        for(let i = 1; i < 10; i++) {
+            list.push(i);
+        }
+        let ul = document.createElement("ul");
+        for(let i = 0; i < list.length; i++) {
+            let li = document.createElement("li");
+            let thisNode = list.get(i);
+            li.innerText = `${thisNode.val} (next: ${thisNode.next ? thisNode.next.val : null})`;
+            ul.appendChild(li);
+        }
+        document.getElementById("list").appendChild(ul);
+    }
   
 </script>
 </html>
