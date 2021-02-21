@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacks</title>
+</head>
+<body>
+    <h1>Stacks</h1>
+    <p>Abstract data structures (LIFO)</p>
+
+    <p>Stacks:</p>
+    <ul>
+        <li>Conceptual - Multiple ways of implementing a stack.</li>
+        <li>Last item inserted is the first removed.</li>
+        <li>Seen in managing function invocation (call stack).</li>
+        <li>Seen in undo/redo actions.</li>
+        <li>Routing (such as the history object in React) uses stack.</li>
+        <li>Arrays CAN function as stacks (push/pop or shift/unshift, but not mixed)</li>
+    </ul>
+
+    <p>Big O</p>
+    <ul>
+        <li>Insertion - O(1)</li>
+        <li>Removal - O(1)</li>
+        <li>Search - O(N)</li>
+        <li>Access - O(N)</li>
+    </ul>
+
+    <p>Examples:</p>
+    <div id="stack">
+
+    </div>
+</body>
+
+<script>
+    //Custom Stack (consists of nodes)
+    class Node {
+        constructor(val) {
+            this.val = val;
+            this.next = null;
+        }
+    }
+
+    class Stack {
+        constructor() {
+            //Initialize new empty stack.
+            this.first = null;
+            this.last = null;
+            this.size = 0;
+        }
+        //Push an item to the end.
+        push(val) {
+            let newNode = new Node(val);
+            //If this stack is empty
+            if(!this.first) {
+                //Set this node to be the first and last
+                this.first = newNode;
+                this.last = newNode;
+            } else {
+                //Otherwise, store the current first property.
+                let currentFirst = this.first;
+                //Reset the first property to be the new node instead.
+                this.first = newNode;
+                //Set the new first node to have the currentFirst (old first) as its new next property.
+                this.first.next = currentFirst;
+            }
+            //Increment the size and return the current size of the stack.
+            return ++this.size;
+        }
+        //Remove an item from the end.
+        pop() {
+            //If there aren't any nodes, return null.
+            if(!this.first) return null;
+            //Store the first property (first node) on the stack.
+            let currentFirst = this.first;
+            //If this is the only item in the list, set the first and last properties to null.
+            if(this.first === this.last) {
+                this.last = null;
+            } 
+            //Make the second item the new first.
+            this.first = this.first.next;
+            //Decrement and return the removed node.
+            this.size--;
+            return currentFirst.val;
+        }
+        print() {
+            let items = "";
+            let currentNode = this.first;
+            for(let i = 0; i < this.size; i++) {
+                items += ` ${currentNode.val} `;
+                currentNode = currentNode.next;
+            }
+            return items;
+        }
+    }
+
+    generateExample();
+
+    function generateExample() {
+        let stack = new Stack();
+        let ul = document.createElement("ul");
+        for(let i = 1; i < 10; i++) {
+            stack.push(i);
+            let li = document.createElement("li");
+            li.innerText = `pushed item: ${i}; Items: ${stack.print()}`;
+            ul.appendChild(li);
+        }
+        while(stack.size) {
+            let thisVal = stack.pop();
+            let li = document.createElement("li");
+            li.innerText = `popped item: ${thisVal}; Remaining Items: ${stack.print()}`;
+            ul.appendChild(li);
+        }
+        document.getElementById("stack").appendChild(ul);
+    }
+    
+</script>
+</html>
