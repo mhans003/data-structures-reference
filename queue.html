@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queues</title>
+</head>
+<body>
+    <h1>Queues</h1>
+    <p>Abstract data structures (FIFO)</p>
+
+    <p>queues:</p>
+    <ul>
+        <li>Conceptual - Multiple ways of implementing a queue.</li>
+        <li>Last item inserted is the last removed.</li>
+        <li>Seen in managing background tasks or uploading resources.</li>
+        <li>Seen in printing and task processing.</li>
+        <li>Arrays CAN function as queues (push/shift or unshift/pop, but not mixed)</li>
+    </ul>
+
+    <p>Big O</p>
+    <ul>
+        <li>Insertion - O(1)</li>
+        <li>Removal - O(1)</li>
+        <li>Search - O(N)</li>
+        <li>Access - O(N)</li>
+    </ul>
+
+    <p>Examples:</p>
+    <div id="queue">
+
+    </div>
+</body>
+<script>
+    class Node {
+        constructor(val){
+            this.val = val;
+            this.next = null;
+        }
+    }
+
+    class Queue {
+        constructor() {
+            this.first = null;
+            this.last = null;
+            this.size = 0;
+        }
+        enqueue(val) {
+            //Create new node.
+            let newNode = new Node(val);
+            //If there are no nodes already
+            if(!this.first) {
+                this.first = newNode;
+                this.last = newNode;
+            } else {
+                //Otherwise, insert the new node behind the current last node.
+                this.last.next = newNode;
+                this.last = newNode;
+            }
+            //Return the current (new) size
+            return ++this.size;
+        }
+        dequeue() {
+            //Return if empty
+            if(!this.first) return null;
+            //Store current first property.
+            let currentFirst = this.first;
+            //See if there is only one node. If so, we now want last to be null.
+            if(this.first === this.last) {
+                this.last = null;
+            } 
+            //Otherwise, set the first property to be the next property of first (take out the first node)
+            this.first = this.first.next;
+            //Decrement and return removed node
+            this.size--;
+            return currentFirst.val;
+        }
+        print() {
+            let items = "";
+            let currentNode = this.first;
+            for(let i = 0; i < this.size; i++) {
+                items += ` ${currentNode.val} `;
+                currentNode = currentNode.next;
+            }
+            return items;
+        }
+    }
+
+    generateExample();
+
+    function generateExample() {
+        let queue = new Queue();
+        let ul = document.createElement("ul");
+        for(let i = 1; i < 10; i++) {
+            queue.enqueue(i);
+            let li = document.createElement("li");
+            li.innerText = `enqueued item: ${i}; Items: ${queue.print()}`;
+            ul.appendChild(li);
+        }
+        while(queue.size) {
+            let thisVal = queue.dequeue();
+            let li = document.createElement("li");
+            li.innerText = `dequeued item: ${thisVal}; Remaining Items: ${queue.print()}`;
+            ul.appendChild(li);
+        }
+        document.getElementById("queue").appendChild(ul);
+    }
+</script>
+</html>
