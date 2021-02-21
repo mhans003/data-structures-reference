@@ -19,6 +19,14 @@
         <li>Cannot support 'random' access, and must be traversed to locate desired node/value</li>
     </ul>
 
+    <p>Big O</p>
+    <ul>
+        <li>Insertion - O(1)</li>
+        <li>Removal - O(1)</li>
+        <li>Search - O(N)</li>
+        <li>Access - O(N)</li>
+    </ul>
+
     <p>Example:</p>
     <div id="list">
     </div>
@@ -200,6 +208,28 @@
             //Decrement and return.
             this.length--;
             return removedNode;
+        }
+        reverse() {
+            //Swap the head and the tail, and save current head to current node.
+            let currentNode = this.head;
+            this.head = this.tail;
+            this.tail = currentNode;
+            //Keep track of the previous node and the next node.
+            let prevNode = null;
+            let nextNode;
+            //Loop through each node
+            for(let i = 0; i < this.length; i++) {
+                //Store the node that will come next.
+                nextNode = currentNode.next;
+                //Swap the previous and next properties of the current node and next node.
+                currentNode.next = prevNode;
+                currentNode.prev = nextNode;
+                //Update values (current node and next node) to iterate.
+                prevNode = currentNode;
+                currentNode = nextNode;
+            }
+            //Return reveresed node.
+            return this;
         }
     }
 

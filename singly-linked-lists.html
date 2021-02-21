@@ -18,6 +18,14 @@
         <li>Cannot support 'random' access, and must be traversed to locate desired node/value</li>
     </ul>
 
+    <p>Big O</p>
+    <ul>
+        <li>Insertion - O(1)</li>
+        <li>Removal - O(1) OR O(N) (if end)</li>
+        <li>Search - O(N)</li>
+        <li>Access - O(N)</li>
+    </ul>
+
     <p>Example:</p>
     <div id="list">
 
@@ -189,7 +197,7 @@
             for(let i = 0; i < this.length; i++) {
                 //Save the current next node.
                 nextNode = currentNode.next;
-                //Set the current node's next to the previous node we want.
+                //For the current node, update the current node's next property.
                 currentNode.next = prevNode;
                 //Update previous node and current node.
                 prevNode = currentNode;
