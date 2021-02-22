@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Tables</title>
+</head>
+<body>
+    <h1>Hash Tables</h1>
+    <p>Used to store key-value pairs</p>
+
+    <p>Hash Tables:</p>
+    <ul>
+        <li>Data structure that provides/maps to key-value pairs</li>
+        <li>Uses hash function to convert keys to a valid array index.</li>
+        <ul>
+            <li>Should be fast</li>
+            <li>Should produce same hash with same input</li>
+        </ul>
+        <li>Actual values stored in array can contain other data structures, such as linked lists.</li>
+        <ul>
+            <li>Data structure at desired index can contain original key alongside value.</li>
+            <li>As a result, mutiple items can be stored at one index (separate chaining)</li>
+            <li>This can handle 'collisions' where two keys/indexes can be converted to same array index.</li>
+            <li>Alternatively, linear probing can be used to keep one item at each slot</li>
+        </ul>
+        <li>Finding, adding, and removing values are quick</li>
+        <li>Examples (built-in structures) in various languages:</li>
+        <ul>
+            <li>Python - Dictionaries</li>
+            <li>JS - Objects/Maps</li>
+                <li>JS Object keys are converted to strings</li>
+            <li>Java/Go/Scala - Maps</li>
+            <li>Ruby - Hashes</li>
+        </ul>
+        <li>Many applications in security and cryptography</li>
+    </ul>
+
+    <p>Big O</p>
+    <ul>
+        <li>Insertion - O(1)</li>
+        <li>Removal - O(1)</li>
+        <li>Access - O(1)</li>
+    </ul>
+
+    <h3>Examples:</h3>
+    <p>Simple Hash Table Example:</p>
+    <div id="hash">
+        <p>Items:</p>
+    </div>
+    <div id="keys">
+        <p>Unique Keys:</p>
+    </div>
+    <div id="values">
+        <p>Unique Values:</p>
+    </div>
+</body>
+<script src="js/classes/HashTable.js"></script>
+<script>
+    let hashTable = new HashTable(11);
+    console.log("Inserting Bob (31 years):")
+    console.log(hashTable.set("bob", 31));
+    console.log("Inserting Jimmy (14 years):")
+    console.log(hashTable.set("jimmy", 14));
+    console.log("Inserting Mary (45 years):")
+    console.log(hashTable.set("mary", 45));
+    console.log("Inserting Mary (51 years):")
+    console.log(hashTable.set("mary", 51));
+    console.log("Inserting Tim (31 years):")
+    console.log(hashTable.set("tim", 31));
+
+    let allKeys = hashTable.keys();
+    let allKeysUnique = hashTable.keysUnique();
+    let allValues = hashTable.values();
+    let allValuesUnique = hashTable.valuesUnique();
+
+    generateHashExample();
+    generateKeys();
+    generateValues();
+
+    function generateHashExample() {
+        let list = document.createElement("ul");
+        for(let i = 0; i < hashTable.keyMap.length; i++) {
+            if(hashTable.keyMap[i]) {
+                for(let j = 0; j < hashTable.keyMap[i].length; j++) {
+                    let li = document.createElement("li");
+                    li.innerText = `[${i}, ${j}] : ${hashTable.keyMap[i][j]}`;
+                    list.appendChild(li);
+                }
+            }
+            
+        }
+        document.getElementById("hash").appendChild(list);
+    }
+
+    function generateKeys() {
+        let list = document.createElement("ul");
+        
+        allKeysUnique.forEach(key => {
+            let li = document.createElement("li");
+            li.innerText = `${key}`;
+            list.appendChild(li);
+        });
+        
+        document.getElementById("keys").appendChild(list);
+    }
+
+    function generateValues() {
+        let list = document.createElement("ul");
+        
+        allValuesUnique.forEach(val => {
+            let li = document.createElement("li");
+            li.innerText = `${val}`;
+            list.appendChild(li);
+        });
+        
+        document.getElementById("values").appendChild(list);
+    }
+
+
+</script>
+</html>
