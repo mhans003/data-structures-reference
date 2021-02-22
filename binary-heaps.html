@@ -38,8 +38,11 @@
         (See Console)
     </div>
 </body>
+<script src="js/classes/Nodes/priorityNode.js"></script>
 <script src="js/classes/MaxBinaryHeap.js"></script>
+<script src="js/classes/PriorityQueue.js"></script>
 <script>
+    console.log("MAX BINARY HEAPS")
     let heap = new MaxBinaryHeap();
     console.log("insert 3:")
     console.log(heap.insert(3));
@@ -62,5 +65,15 @@
     console.log("extract largest:")
     console.log(heap.extractMax());
     console.log(heap.values);
+
+    console.log("PRIORITY QUEUES")
+    let priorityQueue = new PriorityQueue();
+    console.log(priorityQueue.enqueue("low priority", 3));
+    console.log(priorityQueue.enqueue("medium priority", 2));
+    console.log(priorityQueue.enqueue("high priority", 1));
+    console.log(priorityQueue.enqueue("high priority", 1));
+    console.log(priorityQueue.enqueue("medium priority", 2));
+    console.log(priorityQueue.enqueue("low priority", 3));
+
 </script>
 </html>
