@@ -140,4 +140,29 @@ class BinarySearchTree {
             }
         }
     }
+    DepthFirstSearchPostOrder() {
+        //Return if nothing in tree.
+        if(this.root === null) return undefined;
+        //Store the visited nodex.
+        let visitedNodes = [];
+        //Store the current node.
+        let currentNode = this.root;
+        //Call the recursive function traverse to begin going down the tree.
+        traverse(currentNode);
+        //Return the array of nodes visited.
+        return visitedNodes;
+
+        function traverse(node) {
+            //If this node has a left property, recursively travel down its children.
+            if(node.left) {
+                traverse(node.left);
+            }
+            //If this node has a right property, recursively travel down its children.
+            if(node.right) {
+                traverse(node.right);
+            }
+            //Save this node as visited.
+            visitedNodes.push(node.val);
+        }
+    }
 }
