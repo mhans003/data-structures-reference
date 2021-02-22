@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Heaps</title>
+</head>
+<body>
+    <h1>Binary Heaps</h1>
+    <ul>
+        <li>Type of heap with at most two children</li>
+        <li>Heaps require children/parents to always be greater/less than each other, depending on type.</li>
+        <li>Unlike binary search trees, there is no order to left vs. right values, nor between siblings (only parent->child)</li>
+        <li>Compact as possible - All left/right are always filled out first before going downward.</li>
+        <li>Left is prioritized first to be filled.</li>
+        <li>Max Binary Heap: Parent nodes are always greater than child nodes</li>
+        <li>Min Binary Heap: Parent nodes are always less than child nodes</li>
+    </ul>
+
+    <h2>Binary Heaps as Arrays</h2>
+    <ul>
+        <li>
+            <i>For any given index (parent node) n, the left child is located at 2n + 1; the right child is at 2n + 2.</i>
+        </li>
+        <li>
+            <i>For any given index (child node) n, the parent is located at (n - 1)/2 (floored/rounded down).</i>
+        </li>
+    </ul>
+   
+    <p>Big O</p>
+    <ul>
+        <li>Insertion - </li>
+        <li>Searching - </li>
+    </ul>
+
+    <p>Examples:</p>
+    <div id="heaps">
+        (See Console)
+    </div>
+</body>
+<script src="js/classes/MaxBinaryHeap.js"></script>
+<script>
+    let heap = new MaxBinaryHeap();
+    console.log(heap.insert(3));
+    console.log(heap.insert(5));
+    console.log(heap.insert(7));
+    console.log(heap.insert(1));
+    console.log(heap.insert(2));
+    console.log(heap.insert(10));
+    console.log(heap.insert(3));
+    console.log(heap.insert(11));
+    console.log(heap.insert(4));
+    console.log(heap.insert(6));
+    console.log(heap.insert(9));
+</script>
+</html>
