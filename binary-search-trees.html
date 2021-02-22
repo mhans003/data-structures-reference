@@ -41,7 +41,7 @@
 
     <p>Examples:</p>
     <div id="trees">
-
+        (See Console)
     </div>
 </body>
 <script src="js/classes/Nodes/treeNode.js"></script>
@@ -51,13 +51,21 @@
 <script>
     
     let tree = new BinarySearchTree();
-    console.log(tree.insert('c'));
-    console.log(tree.insert('b'));
-    console.log(tree.insert('c'));
-    console.log(tree.insert('a'));
-    console.log(tree.insert('d'));
-    console.log(tree.insert('e'));
-    console.log(tree.insert('z'));
+    console.log("Insert 5:");
+    console.log(tree.insert('5'));
+    console.log("Insert 3:");
+    console.log(tree.insert('3'));
+    console.log("Insert 2:");
+    console.log(tree.insert('2'));
+    console.log("Insert 4:");
+    console.log(tree.insert('4'));
+    console.log("Insert 8:");
+    console.log(tree.insert('8'));
+    console.log("Insert 6:");
+    console.log(tree.insert('6'));
+    console.log("Insert 9:");
+    console.log(tree.insert('9'));
+    console.log("Breadth First Search:");
     console.log(tree.BreadthFirstSearch());
     
 </script>
