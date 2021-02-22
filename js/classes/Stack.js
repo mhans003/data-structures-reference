@@ -1,11 +1,3 @@
-//Custom Stack (consists of nodes)
-class Node {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
-
 class Stack {
     constructor() {
         //Initialize new empty stack.
@@ -15,7 +7,7 @@ class Stack {
     }
     //Push an item to the end.
     push(val) {
-        let newNode = new Node(val);
+        let newNode = new simpleNode(val);
         //If this stack is empty
         if(!this.first) {
             //Set this node to be the first and last

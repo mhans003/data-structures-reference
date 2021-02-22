@@ -1,20 +1,10 @@
-class Node {
-    constructor(val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-        //In this case, we are keeping track of how many instances of this value exist.
-        this.count = 1;
-    }
-}
-
 class BinarySearchTree {
     constructor() {
         this.root = null;
     }
     insert(val) {
         //Create new node
-        let newNode = new Node(val);
+        let newNode = new treeNode(val);
         //If there isn't already a root, make this the root.
         if(this.root === null) {
             this.root = newNode;
@@ -95,5 +85,33 @@ class BinarySearchTree {
             }
         }
         return false;
-    } 
+    }
+    BreadthFirstSearch() {
+        //Return if nothing in tree.
+        if(this.root === null) return undefined;
+        //Create a queue to keep track of nodes to visit.
+        let queue = new Queue();
+        //Create an array to store visited nodes.
+        let visitedNodes = [];
+        //Place the root node into the queue.
+        queue.enqueue(this.root);
+        //While there is a node in the queue to be visited.
+        while(queue.size > 0) {
+            //Access the next node in the queue.
+            let dequeuedNode = queue.dequeueNode();
+            //Push this to the visited nodes array.
+            visitedNodes.push(dequeuedNode);
+            //See if this dequeued node has a left and/or a right property.
+            if(dequeuedNode.left) {
+                //Place the left node into the queue.
+                queue.enqueue(dequeuedNode.left);
+            }
+            if(dequeuedNode.right) {
+                //Place the right node into the queue.
+                queue.enqueue(dequeuedNode.right);
+            }
+        }
+        //After the looping is over, return the visited array.
+        return visitedNodes;
+    }
 }

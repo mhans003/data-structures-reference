@@ -1,11 +1,3 @@
-//Define Node Class
-class Node {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-    }
-}
-
 //Define Singly Linked List
 class SinglyLinkedList {
     constructor() {
@@ -16,7 +8,7 @@ class SinglyLinkedList {
     }
     push(val) {
         //Create new node.
-        let newNode = new Node(val);
+        let newNode = new simpleNode(val);
         //If this is the first, set it to be head and tail.
         if(!this.head) {
             this.head = newNode;
@@ -73,7 +65,7 @@ class SinglyLinkedList {
     }
     unshift(val) {
         //Create the new node.
-        let newNode = new Node(val);
+        let newNode = new simpleNode(val);
         //If there are no items in the list, set this as head and tail.
         if(!this.head) {
             this.head = newNode;
@@ -122,7 +114,7 @@ class SinglyLinkedList {
         if(index === 0) return !!this.unshift(val);
         //Otherwise, follow insert logic.
         //Create new node and save previous node.
-        let newNode = new Node(val);
+        let newNode = new simpleNode(val);
         let prevNode = this.get(index - 1);
         //Keep track of the previous node's next property.
         let prevNext = prevNode.next;

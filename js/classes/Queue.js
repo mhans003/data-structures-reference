@@ -1,10 +1,3 @@
-class Node {
-    constructor(val){
-        this.val = val;
-        this.next = null;
-    }
-}
-
 class Queue {
     constructor() {
         this.first = null;
@@ -13,7 +6,7 @@ class Queue {
     }
     enqueue(val) {
         //Create new node.
-        let newNode = new Node(val);
+        let newNode = new simpleNode(val);
         //If there are no nodes already
         if(!this.first) {
             this.first = newNode;
@@ -40,6 +33,21 @@ class Queue {
         //Decrement and return removed node
         this.size--;
         return currentFirst.val;
+    }
+    dequeueNode() {
+        //Return if empty
+        if(!this.first) return null;
+        //Store current first property.
+        let currentFirst = this.first;
+        //See if there is only one node. If so, we now want last to be null.
+        if(this.first === this.last) {
+            this.last = null;
+        } 
+        //Otherwise, set the first property to be the next property of first (take out the first node)
+        this.first = this.first.next;
+        //Decrement and return removed node
+        this.size--;
+        return currentFirst;
     }
     print() {
         let items = "";

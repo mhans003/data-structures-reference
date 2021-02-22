@@ -1,11 +1,3 @@
-class Node {
-    constructor(val) {
-        this.val = val;
-        this.next = null;
-        this.prev = null;
-    }
-}
-
 class DoublyLinkedList {
     constructor() {
         this.head = null;
@@ -13,7 +5,7 @@ class DoublyLinkedList {
         this.length = 0;
     }
     push(val) {
-        let newNode = new Node(val);
+        let newNode = new doubleNode(val);
         //If there isn't already an item in this list
         if(this.length === 0) {
             //Set the head and tail to the new node.
@@ -76,7 +68,7 @@ class DoublyLinkedList {
     }
     unshift(val) {
         //Create new node.
-        let newNode = new Node(val);
+        let newNode = new doubleNode(val);
         //If no items already, make this new node the head and tail
         if(this.length === 0) {
             this.head = newNode;
@@ -137,7 +129,7 @@ class DoublyLinkedList {
         //If we insert at end, just use push.
         if(index === this.length - 1) return !!this.push(val);
         //Otherwise, Create the new node.
-        let newNode = new Node(val);
+        let newNode = new doubleNode(val);
         //Access the node that will come before this.
         let prevNode = this.get(index - 1);
         //Access the node that will come after this.
