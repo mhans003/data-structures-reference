@@ -98,7 +98,7 @@ class BinarySearchTree {
         //While there is a node in the queue to be visited.
         while(queue.size > 0) {
             //Access the next node in the queue.
-            let dequeuedNode = queue.dequeueNode();
+            let dequeuedNode = queue.dequeue();
             //Push this to the visited nodes array.
             visitedNodes.push(dequeuedNode);
             //See if this dequeued node has a left and/or a right property.
