@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs</title>
+</head>
+<body>
+    <h1>Graphs</h1>
+    <p>Data structures consisting of connected nodes ('vertices' connected via 'edges')</p>
+
+    <p>Graphs:</p>
+    <ul>
+        <li>Don't inherently contain a particular order</li>
+        <li>Nodes can have multiple connections to other nodes</li>
+        <li>Variants:</li>
+        <ul>
+            <li>Undirected graphs - No 'direction' or polarity to edges</li>
+            <li>Directed graphs - Direction/Polarity matters</li>
+            <li>Weighted graphs - Values assigned to edges (info about each connection)</li>
+            <li>Unweighted graphs - Values not assigned to edges</li>
+        </ul>
+        <li>Examples/Applications:</li>
+        <ul>
+            <li>Social Media/Networking</li>
+            <li>Maps/Geo Systems</li>
+        </ul>
+        <li>Storing Graphs</li>
+        <ul>
+            <li>Adjacency Matrix - Storing rows/cols that represent a connection as present or not</li>
+                <ul>
+                    <li>Data can reflect presence and absence of connections</li>
+                    <li>Takes up more space, slower to iterate, faster to lookup specific edge</li>
+                    <li>Likely better if data is compact and dense (many connections between most nodes)</li>
+                </ul>
+            <li>Adjacency List - For every given key, store which other nodes each node connects to (such as in an array or custom hash table)</li>
+                <ul>
+                    <li>Data can simply reflect presence of connections to other nodes</li>
+                    <li>Takes up less space, faster to iterate, slower to lookup specific edge</li>
+                    <li>Likely better to model real-word massive data</li>
+                </ul>
+        </ul>
+    </ul>
+
+    <h3>Examples:</h3>
+    <div id="">
+    
+    </div>
+
+</body>
+<script src="js/classes/Graph.js"></script>
+</html>
