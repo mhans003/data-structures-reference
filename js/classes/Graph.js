@@ -41,4 +41,57 @@ class undirectedGraph {
             }
         }
     }
+    depthFirstSearchRecursive(start) {
+        //Keep track of all traversed items.
+        let traversedNodes = [];
+        //Keep track of visisted nodes.
+        let visitedNodes = {};
+        //'this' keyword will not work in helper function, so we need to store this.adjacencyList in adjacencyList.
+        let adjacencyList = this.adjacencyList;
+        //Immediately invoke first (recursive) call.
+        (function search(vertex) {
+            //Return if empty.
+            if(!vertex) return null;
+            //Mark this node as visited and push.
+            visitedNodes[vertex] = true;
+            traversedNodes.push(vertex);
+            //Loop through every 'neighbor' of this vertex. Call this function if that neighbor is not visited.
+            adjacencyList[vertex].forEach(neighbor => {
+                if(!visitedNodes[neighbor]) {
+                    //Go through this same process with this neighbor if not visited already.
+                    return search(neighbor);
+                }
+            });
+        })(start);
+        //Return the traversed nodes.
+        return traversedNodes;
+    }
+    depthFirstSearchIterative(start) {
+        //Keep track of all traversed items.
+        let traversedNodes = [];
+        //Keep track of visisted nodes.
+        let visitedNodes = {};
+        //Stack helps keep track of vertices.
+        let vertexStack = [];
+        //Add the starting vertex to stack.
+        vertexStack.push(start);
+        //While there is something in the stack, loop over vertices/neighbors
+        while(vertexStack.length) {
+            //Get the next vertex.
+            let thisVertex = vertexStack.pop();
+            //If this vertex isn't already visited
+            if(!visitedNodes[thisVertex]) {
+                //Mark as visited
+                visitedNodes[thisVertex] = true;
+                //Add this to the results.
+                traversedNodes.push(thisVertex);
+                //Loop through this vertex's neighbors and add to stack.
+                this.adjacencyList[thisVertex].forEach(neighbor => {
+                    vertexStack.push(neighbor);
+                });
+            }
+        }
+        //At the end, return the results.
+        return traversedNodes;
+    }
 }

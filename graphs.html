@@ -40,6 +40,18 @@
                     <li>Likely better to model real-word massive data</li>
                 </ul>
         </ul>
+        <li>Traversing Graphs</li>
+        <ul>
+            <li>Depth-First: Going as 'far as possible' first to all neighbors before going 'back' to earlier neighbors.</li>
+        </ul>
+        <li>Examples:</li>
+        <ul>
+            <li>Networking</li>
+            <li>Web Crawlers</li>
+            <li>Social Media/Networking: Recommendations, Matches, etc.</li>
+            <li>GPS Navigation</li>
+            <li>Artificial Intelligence</li>
+        </ul>
     </ul>
 
     <h3>Examples:</h3>
@@ -49,4 +61,17 @@
 
 </body>
 <script src="js/classes/Graph.js"></script>
+<script>
+    let g = new undirectedGraph();
+    g.addVertex("A");
+    g.addVertex("B");
+    g.addVertex("C");
+    g.addVertex("D");
+    g.addEdge("A","B");
+    g.addEdge("A","C");
+    g.addEdge("B","C");
+    g.addEdge("C","D");
+    console.log(g.depthFirstSearchRecursive("A"));
+    console.log(g.depthFirstSearchIterative("A"));
+</script>
 </html>
