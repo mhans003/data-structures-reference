@@ -43,6 +43,7 @@
         <li>Traversing Graphs</li>
         <ul>
             <li>Depth-First: Going as 'far as possible' first to all neighbors before going 'back' to earlier neighbors.</li>
+            <li>Breadth-First: Visiting all neighbors for a given vertex before going to next neighbor's neighbors.</li>
         </ul>
         <li>Examples:</li>
         <ul>
@@ -56,22 +57,25 @@
 
     <h3>Examples:</h3>
     <div id="">
-    
+        See Console
     </div>
 
 </body>
 <script src="js/classes/Graph.js"></script>
 <script>
     let g = new undirectedGraph();
+    console.log("Adjacency List:");
     g.addVertex("A");
     g.addVertex("B");
     g.addVertex("C");
     g.addVertex("D");
     g.addEdge("A","B");
-    g.addEdge("A","C");
-    g.addEdge("B","C");
-    g.addEdge("C","D");
+    g.addEdge("D","B");
+    console.log(g);
+    console.log("Depth First:");
     console.log(g.depthFirstSearchRecursive("A"));
     console.log(g.depthFirstSearchIterative("A"));
+    console.log("Breadth First:");
+    console.log(g.breadthFirstSearchIterative("A"));
 </script>
 </html>

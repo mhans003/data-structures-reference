@@ -75,21 +75,51 @@ class undirectedGraph {
         let vertexStack = [];
         //Add the starting vertex to stack.
         vertexStack.push(start);
+        //Mark first as visited.
+        visitedNodes[start] = true;
         //While there is something in the stack, loop over vertices/neighbors
         while(vertexStack.length) {
             //Get the next vertex.
             let thisVertex = vertexStack.pop();
-            //If this vertex isn't already visited
-            if(!visitedNodes[thisVertex]) {
-                //Mark as visited
-                visitedNodes[thisVertex] = true;
-                //Add this to the results.
-                traversedNodes.push(thisVertex);
-                //Loop through this vertex's neighbors and add to stack.
-                this.adjacencyList[thisVertex].forEach(neighbor => {
+            //Add this to the results.
+            traversedNodes.push(thisVertex);
+            //Loop through each neighbor in this adjacency list.
+            this.adjacencyList[thisVertex].forEach(neighbor => {
+                //If not already done, visit this neighbor and add to list.
+                if(!visitedNodes[neighbor]) {
+                    visitedNodes[neighbor] = true;
                     vertexStack.push(neighbor);
-                });
-            }
+                }
+            });
+        }
+        //At the end, return the results.
+        return traversedNodes;
+    }
+    breadthFirstSearchIterative(start) {
+        //Keep track of all traversed items.
+        let traversedNodes = [];
+        //Keep track of visisted nodes.
+        let visitedNodes = {};
+        //Queue helps keep track of vertices.
+        let vertexQueue = [];
+        //Add the starting vertex to queue.
+        vertexQueue.push(start);
+        //Mark first as visited.
+        visitedNodes[start] = true;
+        //While the queue isn't empty
+        while(vertexQueue.length) {
+            //Get the next vertex
+            let thisVertex = vertexQueue.shift();
+            //Add this to the results.
+            traversedNodes.push(thisVertex);
+            //For each vertex in this vertex's adjacency list, mark as visited and store
+            this.adjacencyList[thisVertex].forEach(neighbor => {
+                //If not already done, mark this neighbor as visited and push to list.
+                if(!visitedNodes[neighbor]) {
+                    visitedNodes[neighbor] = true;
+                    vertexQueue.push(neighbor);
+                }
+            });
         }
         //At the end, return the results.
         return traversedNodes;
