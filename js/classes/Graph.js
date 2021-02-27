@@ -125,3 +125,29 @@ class undirectedGraph {
         return traversedNodes;
     }
 }
+
+class WeightedGraph {
+    constructor() {
+        this.adjacencyList = {};
+    }
+    addVertex(vertex) {
+        //Since vertex is the key, set it to an empty array within the list object.
+        if(!this.adjacencyList[vertex]) {
+            this.adjacencyList[vertex] = [];
+        }
+    }
+    addEdge(vertex1, vertex2, weight) {
+        if(this.adjacencyList[vertex1] && this.adjacencyList[vertex2]) {
+            //Find key of vertex1 (add vertex2)
+            this.adjacencyList[vertex1].push({
+                node: vertex2,
+                weight
+            });
+            //Find key of vertex2 (add vertex1)
+            this.adjacencyList[vertex2].push({
+                node: vertex1,
+                weight
+            });
+        }
+    }
+}
