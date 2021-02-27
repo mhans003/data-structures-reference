@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //Add commas to a number programmatically and return as a string.
+    const addNumberCommas = (number) => {
+        //Results are unpredictable if greater than this number.
+        if(number > 999999999999999) {
+            return "Too Large";
+        }
+
+        //Parse number to string.
+        let numberString = number.toString();
+
+        //Find the number of commas.
+        numCommas = Math.floor((numberString.length - 1) / 3);
+
+        //Incremently add commas to number string.
+        for(let commaNumber = 1; commaNumber <= numCommas; commaNumber++) {
+            //Using the current string on each iteration, find where next comma should go and insert between two halves.
+            numberString = numberString.slice(0, numberString.length - ((commaNumber * 4) - 1)) + 
+                           "," + 
+                           numberString.slice(numberString.length - ((commaNumber * 4) - 1));
+        }
+
+        //Return string number with commas.
+        return numberString;
+    }
+    console.log(addNumberCommas(1598348));
+</script>
+</html>
