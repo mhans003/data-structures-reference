@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Variety</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const cities = [
+        {
+            name: "New York",
+            state: "New York",
+            population: 8622357
+        },
+        {
+            name: "Los Angeles",
+            state: "California",
+            population: 4085014
+        },
+        {
+            name: "Chicago",
+            state: "Illinois",
+            population: 2670406
+        },
+        {
+            name: "Houston",
+            state: "Texas",
+            population: 2378146
+        },
+        {
+            name: "Phoenix",
+            state: "Arizona",
+            population: 1743469
+        },
+        {
+            name: "Philadelphia",
+            state: "Pennsylvania",
+            population: 1590402
+        },
+        {
+            name: "San Antonio",
+            state: "Texas",
+            population: 1579504
+        },
+        {
+            name: "San Diego",
+            state: "California",
+            population: 1469490
+        },
+        {
+            name: "Dallas",
+            state: "Texas",
+            population: 1400337
+        },
+        {
+            name: "San Jose",
+            state: "California",
+            population: 1036242
+        }
+    ];
+
+    //Add commas to a number programmatically and return as a string.
+    const addNumberCommas = (number) => {
+        //Results are unpredictable if greater than this number.
+        if(number > 999999999999999) {
+            return "Too Large";
+        }
+
+        //Parse number to string.
+        let numberString = number.toString();
+
+        //Find the number of commas.
+        numCommas = Math.floor((numberString.length - 1) / 3);
+
+        //Incremently add commas to number string.
+        for(let commaNumber = 1; commaNumber <= numCommas; commaNumber++) {
+            //Using the current string on each iteration, find where next comma should go and insert between two halves.
+            numberString = numberString.slice(0, numberString.length - ((commaNumber * 4) - 1)) + 
+                           "," + 
+                           numberString.slice(numberString.length - ((commaNumber * 4) - 1));
+        }
+
+        //Return string number with commas.
+        return numberString;
+    }
+
+    //Initialize values.
+    let cityNames = [];
+    let populationTotal = 0;
+
+    //Simple For Loop Iteration (Common Practice Counter Name)
+    console.log("SIMPLE FOR LOOP (COMMON PRACTICE COUNTER i)");
+
+    for(let i = 0; i < cities.length; i++) {
+        cityNames.push(cities[i].name);
+    }
+
+    for(let i = 0; i < cities.length; i++) {
+        //populationTotal = populationTotal + cities[i].population;
+        populationTotal += cities[i].population;
+    }
+
+    //Output and reset.
+    console.log(`Cities: ${cityNames}`);
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+
+    cityNames = [];
+    populationTotal = 0;
+
+    //Simple For Loop Iteration (Descriptive Counter Name)
+    console.log("SIMPLE FOR LOOP (DESCRIPTIVE COUNTER NAME)");
+
+    for(let cityIndex = 0; cityIndex < cities.length; cityIndex++) {
+        cityNames.push(cities[cityIndex].name);
+    }
+
+    for(let cityIndex = 0; cityIndex < cities.length; cityIndex++) {
+        //populationTotal = populationTotal + cities[cityIndex].population;
+        populationTotal += cities[cityIndex].population;
+    }
+
+    //Output and reset.
+    console.log(`Cities: ${cityNames}`);
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+
+    cityNames = [];
+    populationTotal = 0;
+
+    //ForEach Loop
+    console.log("FOREACH LOOP");
+
+    cities.forEach(city => {
+        cityNames.push(city.name);
+    });
+
+    cities.forEach(city => {
+        populationTotal += city.population;
+    });
+
+    //Output and reset.
+    console.log(`Cities: ${cityNames}`);
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+
+    cityNames = [];
+    populationTotal = 0;
+
+    //ForEach ES6 Simplified
+    console.log("FOREACH LOOP (ES6 SIMPLIFIED)");
+
+    cities.forEach(city => cityNames.push(city.name));
+
+    cities.forEach(city => populationTotal += city.population);
+
+    //Output and reset.
+    console.log(`Cities: ${cityNames}`);
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+
+    cityNames = [];
+    populationTotal = 0;
+
+    //For Of Loop
+    console.log("FOR-OF LOOP");
+
+    for(let city of cities) {
+        cityNames.push(city.name);
+    }
+
+    for(let city of cities) {
+        populationTotal += city.population;
+    }
+
+    //Output and reset.
+    console.log(`Cities: ${cityNames}`);
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+
+    cityNames = [];
+    populationTotal = 0;
+
+    //Map (return array of cities)
+    console.log("ARRAY MAP (RETURN CITIES)");
+
+    cityNames = cities.map(city => {
+        return city.name;
+    });
+
+    //Output and reset
+    console.log(`Cities: ${cityNames}`);
+    cityNames = [];
+
+    //Reduce (return population total)
+    console.log("ARRAY REDUCE (RETURN POPULATION TOTAL)");
+
+    populationTotal = cities.reduce((currentTotal, currentCity) => {
+        return currentTotal + currentCity.population;
+    }, 0);
+
+    //Output and reset.
+    
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+    populationTotal = 0;
+
+    //Map ES6 Simpliied (return array of cities)
+    console.log("ARRAY MAP (RETURN CITIES) ES6 SIMPLIFIED");
+
+    cityNames = cities.map(city => city.name);
+
+    //Output and reset
+    console.log(`Cities: ${cityNames}`);
+    cityNames = [];
+
+    //Reduce ES6 Simplified (return population total)
+    console.log("ARRAY REDUCE (RETURN POPULATION TOTAL) ES6 SIMPLIFIED");
+
+    populationTotal = cities.reduce((currentTotal, currentCity) => currentTotal + currentCity.population, 0);
+
+    //Output and reset.
+    console.log(`Population total: ${addNumberCommas(populationTotal)}`);
+    populationTotal = 0;
+
+    //ARRAY FILTER (return cities located in California).
+    console.log("ARRAY FILTER (RETURN CITIES IN CA)");
+    
+    cityNames = cities.filter(city => {
+        return city.state === "California";
+    }).map(city => {
+        return city.name;
+    });
+
+    //Output and reset.
+    console.log(`Cities in CA: ${cityNames}`);
+    cityNames = [];
+
+    //ARRAY FILTER (return cities located in California) ES6 SIMPLIFIED.
+    console.log("ARRAY FILTER (RETURN CITIES IN CA) ES6 SIMPLIFIED");
+    
+    cityNames = cities.filter(city => city.state === "California").map(city => city.name);
+
+    //Output and reset.
+    console.log(`Cities in CA: ${cityNames}`);
+    cityNames = [];
+
+    //-----
+
+    //ARRAY FILTER (RETURN POPULATION OF CITIES IN CA).
+    console.log("ARRAY FILTER (RETURN POPULATION OF CITIES IN CA)");
+    
+    populationTotal = cities.filter(city => {
+        return city.state === "California";
+    }).reduce((currentTotal, currentCity) => {
+        return currentTotal + currentCity.population;
+    }, 0);
+
+    //Output and reset.
+    console.log(`Population of cities in CA: ${addNumberCommas(populationTotal)}`);
+    populationTotal = 0;
+
+    //ARRAY FILTER (RETURN POPULATION OF CITIES IN CA) ES6 SIMPLIFIED.
+    console.log("ARRAY FILTER (RETURN POPULATION OF CITIES IN CA) ES6 SIMPLIFIED");
+    
+    populationTotal = cities.filter(city => city.state === "California").reduce((currentTotal, currentCity) => currentTotal + currentCity.population, 0);
+
+    //Output and reset.
+    console.log(`Population of cities in CA: ${addNumberCommas(populationTotal)}`);
+    populationTotal = 0;
+
+    
+</script>
+</html>
