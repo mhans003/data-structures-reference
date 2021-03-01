@@ -1,0 +1,22 @@
+{
+  "name": "data_structure_reference",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhans003/data-structures-reference.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mhans003/data-structures-reference/issues"
+  },
+  "homepage": "https://github.com/mhans003/data-structures-reference#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
