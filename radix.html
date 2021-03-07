@@ -11,23 +11,20 @@
     <div id="values"></div>
     <p>Sorted:</p>
     <div id="sorted"></div>
-    <p>Steps:</p>
+    <p>Steps (Open Console for Full Steps):</p>
     <ul id="steps"></ul>
 </body>
 <script src="js/sorts/Radix.js"></script>
 <script>
-    console.log(radixSort([1,5,3,9,8,2]))
-    /*
     createExample();
 
     function createExample() {
         let randomArray = [];
         for(let i = 0; i < 10; i++) {
-            randomArray.push(Math.floor(Math.random() * 10));
+            randomArray.push(Math.floor(Math.random() * 2000));
         }
         document.getElementById("values").innerText = randomArray;
-        document.getElementById("sorted").innerText = mergeSort(randomArray);
+        document.getElementById("sorted").innerText = radixSort(randomArray);
     }
-    */
 </script>
 </html>

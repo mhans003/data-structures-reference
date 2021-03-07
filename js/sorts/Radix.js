@@ -34,6 +34,8 @@ function radixSort(numbers) {
     for(let exponent = 0; exponent < maxDigitCount; exponent++) {
         //Create the different 'buckets' (base 10) to place numbers in for this iteration
         let digitBuckets = Array.from({length: 10}, () => []);
+        console.log(`Creating digitBuckets for exponent ${exponent}`);
+        document.getElementById("steps").innerHTML += `<li>Creating 'Buckets' for exponent ${exponent}</li>`;
         //Loop through every number.
         for(let index = 0; index < numbers.length; index++) {
             //For this number, get the digit at the current 'exponent'
@@ -41,8 +43,10 @@ function radixSort(numbers) {
             //At the correct 'bucket', insert this number
             digitBuckets[digit].push(numbers[index]);
         }
+        console.log(digitBuckets);
         //Put the numbers back together
         numbers = [].concat(...digitBuckets);
+        console.log(`Array currently: ${numbers}`);
     }
     return numbers;
 }
