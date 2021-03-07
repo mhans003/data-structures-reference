@@ -14,6 +14,7 @@ function pivot(array, start = 0, end = array.length - 1) {
 
     //Loop through every element after the pivot
     for(let currentIndex = start + 1; currentIndex <= end; currentIndex++) {
+        console.log(`currentIndex is now ${currentIndex}; swapIndex is now ${swapIndex}`);
         //See if pivot is greater than this element
         if(pivot > array[currentIndex]) {
             console.log(`pivot ${pivot} is greater than ${array[currentIndex]}`)
@@ -32,4 +33,23 @@ function pivot(array, start = 0, end = array.length - 1) {
     swap(array, start, swapIndex);
     console.log(`Final array: ${array}`)
     return swapIndex;
+}
+
+function quickSort(array, left = 0, right = array.length - 1) {
+    document.getElementById("steps").innerHTML += `<li>Starting with ${array}: Left index is ${left} (${array[left]}); Right index is ${right} (${array[right]})</li>`;
+    //Unwind/return the recursive calls if left and right are the same
+    if(left < right) {
+        //Get the pivot index (where to split the array)
+        let pivotIndex = pivot(array, left, right);
+
+        //Left
+        quickSort(array, left, pivotIndex - 1);
+        //Right
+        quickSort(array, pivotIndex + 1, right);
+    } else {
+        document.getElementById("steps").innerHTML += `<li>Unwinding</li>`;
+    }
+    
+    //Finally, return the sorted array.
+    return array;
 }
