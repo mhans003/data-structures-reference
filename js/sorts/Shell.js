@@ -6,6 +6,7 @@ function shellSort(array) {
     while(increment > 0) {
         //Loop through the elements (to compare to element at distance of increment)
         for(let index = increment; index < array.length; index++) {
+            document.getElementById("steps").innerHTML += `<li>NOW LOOPING STARTING WITH INCREMENT ${increment}/INDEX ${index}</li>`;
 
             //Store index value in second index to use as reference to other element
             let j = index;
@@ -16,16 +17,15 @@ function shellSort(array) {
             //While the other index is greater/equal to current index 
             //AND second element being referred to is larger than the temp variable
             while(j >= increment && array[j - increment] > temp) {
-                console.log(`IN INNER WHILE LOOP`)
+                document.getElementById("steps").innerHTML += `<li>->IN INNER WHILE LOOP</li>`;
                 //Swap the elements
                 //Element at the otehr index is now 
-                console.log(`${array[j]} is now ${array[j - increment]}`)
+                document.getElementById("steps").innerHTML += `<li>Going to swap ${array[j]}(index ${j}) and ${array[j - increment]}(index ${j - increment})</li>`;
                 array[j] = array[j - increment];
                 j -= increment;
             }
 
             //Put the temp variable in the location of the second index
-            console.log(`${array[j]} is now ${temp}`)
             array[j] = temp;
 
         }
