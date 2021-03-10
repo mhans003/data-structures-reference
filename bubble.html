@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+</head>
+<body>
+    <h1>Bubble Sort</h1>
+    <p>Example Values:</p>
+    <div id="values"></div>
+    <p>Sorted:</p>
+    <div id="sorted"></div>
+    <ul id="steps"></ul>
+</body>
+<script src="js/sorts/Bubble.js"></script>
+<script>
+    
+    createExample();
+
+    function createExample() {
+        let randomArray = [];
+        for(let i = 0; i < 10; i++) {
+            randomArray.push(Math.floor(Math.random() * 10));
+        }
+        document.getElementById("values").innerText = randomArray;
+        document.getElementById("sorted").innerText = bubbleSort(randomArray);
+    }
+    
+    
+</script>
+</html>
