@@ -7,11 +7,25 @@
 </head>
 <body>
     <h1>Shell Sort</h1>
+    <h3>Iterate through several times, swapping two out-of-order values within an increasingly smaller increment range.</h3>
+    <ul>
+        <li>O(n log(n)) -> O(n^2) Time</li>
+        <li>O(1) Extra Space</li>
+        <li>Not Stable</li>
+    </ul>
     <p>Example Values:</p>
     <div id="values"></div>
     <p>Sorted:</p>
     <div id="sorted"></div>
-    <p>Steps (Open Console for Full Steps):</p>
+    <p>
+        Best On:
+        <strong>Nearly Sorted Data</strong>(O(n log(n)))
+    </p>
+    <p>
+        Worst On:
+        <strong>Random Data</strong>
+    </p>
+    <p>Steps:</p>
     <ul id="steps"></ul>
 </body>
 <script src="js/sorts/Shell.js"></script>
@@ -23,7 +37,7 @@
     function createExample() {
         let randomArray = [];
         for(let i = 0; i < 10; i++) {
-            randomArray.push(Math.floor(Math.random() * 10));
+            randomArray.push(Math.floor(Math.random() * 100));
         }
         document.getElementById("values").innerText = randomArray;
         document.getElementById("sorted").innerText = shellSort(randomArray);

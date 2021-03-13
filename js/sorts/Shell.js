@@ -9,24 +9,24 @@ function shellSort(array) {
             document.getElementById("steps").innerHTML += `<li>NOW LOOPING STARTING WITH INCREMENT ${increment}/INDEX ${index}</li>`;
 
             //Store index value in second index to use as reference to other element
-            let j = index;
+            let secondIndex = index;
 
             //Create a temporary storage of this current element at index
             let temp = array[index];
 
             //While the other index is greater/equal to current index 
             //AND second element being referred to is larger than the temp variable
-            while(j >= increment && array[j - increment] > temp) {
+            while(secondIndex >= increment && array[secondIndex - increment] > temp) {
                 document.getElementById("steps").innerHTML += `<li>->IN INNER WHILE LOOP</li>`;
                 //Swap the elements
                 //Element at the otehr index is now 
-                document.getElementById("steps").innerHTML += `<li>Going to swap ${array[j]}(index ${j}) and ${array[j - increment]}(index ${j - increment})</li>`;
-                array[j] = array[j - increment];
-                j -= increment;
+                document.getElementById("steps").innerHTML += `<li>Going to swap ${array[secondIndex]}(index ${secondIndex}) and ${array[secondIndex - increment]}(index ${secondIndex - increment})</li>`;
+                array[secondIndex] = array[secondIndex - increment];
+                secondIndex -= increment;
             }
 
             //Put the temp variable in the location of the second index
-            array[j] = temp;
+            array[secondIndex] = temp;
 
         }
 
