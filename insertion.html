@@ -7,10 +7,24 @@
 </head>
 <body>
     <h1>Insertion Sort</h1>
+    <h3>Take each sequential value and shift downward into sorted section until in the correct index.</h3>
+    <ul>
+        <li>O(n^2) Time</li>
+        <li>O(1) Extra Space</li>
+        <li>Stable</li>
+    </ul>
     <p>Example Values:</p>
     <div id="values"></div>
     <p>Sorted:</p>
     <div id="sorted"></div>
+    <p>
+        Best On:
+        <strong>Nearly Sorted Data</strong>(O(N))
+    </p>
+    <p>
+        Worst On:
+        <strong>Reversed Data</strong>
+    </p>
     <ul id="steps"></ul>
 </body>
 <script src="js/sorts/Insertion.js"></script>
@@ -21,7 +35,7 @@
     function createExample() {
         let randomArray = [];
         for(let i = 0; i < 10; i++) {
-            randomArray.push(Math.floor(Math.random() * 10));
+            randomArray.push(Math.floor(Math.random() * 100));
         }
         document.getElementById("values").innerText = randomArray;
         document.getElementById("sorted").innerText = insertionSort(randomArray);
