@@ -12,6 +12,8 @@ function pivot(array, start = 0, end = array.length - 1) {
     //Keep track of the index we want to return (where pivot should go)
     let swapIndex = start;
 
+    console.log(`Entering pivot function with start ${start} and end ${end}; Pivot is ${pivot} and swapIndex is ${start}. Array is ${array}`);
+
     //Loop through every element after the pivot
     for(let currentIndex = start + 1; currentIndex <= end; currentIndex++) {
         console.log(`currentIndex is now ${currentIndex}; swapIndex is now ${swapIndex}`);
